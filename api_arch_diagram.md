@@ -1,10 +1,8 @@
 ```mermaid
-graph LR
-    subgraph clients
+graph TD
         CLIENT[Clients]
-    end
     
-    subgraph server
+    subgraph express
         API[Tarpaulin API Server]
         subgraph middleware
             subgraph security middleware
@@ -13,11 +11,12 @@ graph LR
             end
             UPLOAD[Multer File Upload]
         end
-        subgraph database
-            DB[MongoDB]
-            FILE_DB[GridFS]
-        end
     end
+    subgraph database
+        DB[MongoDB]
+        FILE_DB[GridFS]
+    end
+    ROSTER[Deffered Roster Generation]
     
     CLIENT <--> API
     API --> IP_LIMIT
@@ -27,4 +26,5 @@ graph LR
     DB <--> FILE_DB
     API --> UPLOAD
     UPLOAD --> FILE_DB
+    API <--> ROSTER
 ```
