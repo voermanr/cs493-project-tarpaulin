@@ -10,6 +10,8 @@ paths:
       summary: Create a new User.
       description: >
         Create and store a new application User with specified data and adds it to the application's database.  Only an authenticated User with 'admin' role can create users with the 'admin' or 'instructor' roles.
+      security:
+        - BearerAuth: []
       operationId: createUser
       tags:
         - Users
@@ -119,6 +121,9 @@ paths:
 
     get:
       summary: Fetch data about a specific User.
+      security:
+        - Instructor: []
+          Student: []
       description: >
         Returns information about the specified User.  If the User has the 'instructor' role, the response should include a list of the IDs of the Courses the User teaches (i.e. Courses whose `instructorId` field matches the ID of this User).  If the User has the 'student' role, the response should include a list of the IDs of the Courses the User is enrolled in.  Only an authenticated User whose ID matches the ID of the requested User can fetch this information.
       operationId: getUserById
@@ -198,6 +203,8 @@ paths:
 
     post:
       summary: Create a new course.
+      security:
+        - Admin: []
       description: >
         Creates a new Course with specified data and adds it to the application's database.  Only an authenticated User with 'admin' role can create a new Course.
       operationId: createCourse
@@ -276,6 +283,9 @@ paths:
 
     patch:
       summary: Update data for a specific Course.
+      security:
+        - Instructor: []
+          Admin: []
       description: >
         Performs a partial update on the data for the Course.  Note that enrolled students and assignments cannot be modified via this endpoint.  Only an authenticated User with 'admin' role or an authenticated 'instructor' User whose ID matches the `instructorId` of the Course can update Course information.
       operationId: updateCourseById
@@ -315,6 +325,8 @@ paths:
 
     delete:
       summary: Remove a specific Course from the database.
+      security:
+        - Admin: []
       description: >
         Completely removes the data for the specified Course, including all enrolled students, all Assignments, etc.  Only an authenticated User with 'admin' role can remove a Course.
       operationId: removeCourseById
@@ -351,6 +363,9 @@ paths:
         required: true
     get:
       summary: Fetch a list of the students enrolled in the Course.
+      security:
+        - Instructor: []
+          Admin: []
       description: >
         Returns a list containing the User IDs of all students currently enrolled in the Course.  Only an authenticated User with 'admin' role or an authenticated 'instructor' User whose ID matches the `instructorId` of the Course can fetch the list of enrolled students.
       operationId: getStudentsByCourseId
@@ -385,6 +400,9 @@ paths:
 
     post:
       summary: Update enrollment for a Course.
+      security:
+        - Instructor: []
+          Admin: []
       description: >
         Enrolls and/or unenrolls students from a Course.  Only an authenticated User with 'admin' role or an authenticated 'instructor' User whose ID matches the `instructorId` of the Course can update the students enrolled in the Course.
       operationId: updateEnrollmentByCourseId
@@ -453,6 +471,9 @@ paths:
         required: true
     get:
       summary: Fetch a CSV file containing list of the students enrolled in the Course.
+      security:
+        - Instructor: []
+          Admin: []
       description: >
         Returns a CSV file containing information about all of the students currently enrolled in the Course, including names, IDs, and email addresses.  Only an authenticated User with 'admin' role or an authenticated 'instructor' User whose ID matches the `instructorId` of the Course can fetch the course roster.
       operationId: getRosterByCourseId
@@ -525,6 +546,9 @@ paths:
   /assignments:
     post:
       summary: Create a new Assignment.
+      security:
+        - Instructor: []
+          Admin: []
       description: >
         Create and store a new Assignment with specified data and adds it to the application's database.  Only an authenticated User with 'admin' role or an authenticated 'instructor' User whose ID matches the `instructorId` of the Course corresponding to the Assignment's `courseId` can create an Assignment.
       operationId: createAssignment
@@ -603,6 +627,9 @@ paths:
 
     patch:
       summary: Update data for a specific Assignment.
+      security:
+        - Instructor: []
+          Admin: []
       description: >
         Performs a partial update on the data for the Assignment.  Note that submissions cannot be modified via this endpoint.  Only an authenticated User with 'admin' role or an authenticated 'instructor' User whose ID matches the `instructorId` of the Course corresponding to the Assignment's `courseId` can update an Assignment.
       operationId: updateAssignmentById
@@ -642,6 +669,9 @@ paths:
 
     delete:
       summary: Remove a specific Assignment from the database.
+      security:
+        - Instructor: []
+          Admin: []
       description: >
         Completely removes the data for the specified Assignment, including all submissions.  Only an authenticated User with 'admin' role or an authenticated 'instructor' User whose ID matches the `instructorId` of the Course corresponding to the Assignment's `courseId` can delete an Assignment.
       operationId: removeAssignmentsById
@@ -679,6 +709,9 @@ paths:
 
     get:
       summary: Fetch the list of all Submissions for an Assignment.
+      security:
+        - Instructor: []
+          Admin: []
       description: >
         Returns the list of all Submissions for an Assignment.  This list should be paginated.  Only an authenticated User with 'admin' role or an authenticated 'instructor' User whose ID matches the `instructorId` of the Course corresponding to the Assignment's `courseId` can fetch the Submissions for an Assignment.
       operationId: getSubmissionsByAssignmentId
@@ -730,6 +763,8 @@ paths:
 
     post:
       summary: Create a new Submission for an Assignment.
+      security:
+        - Student: []
       description: >
         Create and store a new Assignment with specified data and adds it to the application's database.  Only an authenticated User with 'student' role who is enrolled in the Course corresponding to the Assignment's `courseId` can create a Submission.
       operationId: createSubmission
@@ -906,6 +941,19 @@ components:
         error:
           type: string
           description: A message describing the Error.
+  securitySchemes:
+    Student:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    Instructor:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    Admin:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 tags:
   - name: Users
