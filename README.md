@@ -6,4 +6,4 @@ I think that it just made sense.
 
 # TODO
 - [x] add security fields to openapi
-- [ ] merge
+- [x] merge
