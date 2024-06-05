@@ -1,5 +1,5 @@
 ```mermaid
-graph TB
+graph LR
     CLIENT[Clients]
     subgraph docker compose
         subgraph express
@@ -10,6 +10,7 @@ graph TB
                     AUTH[JWT Authentication]
                 end
                 UPLOAD[Multer File Upload]
+                DB_WRAPPER[mongoose]
             end
         end 
         subgraph database
@@ -24,7 +25,8 @@ graph TB
     API --> IP_LIMIT
     IP_LIMIT --> AUTH
     AUTH --> API
-    API <--> DB
+    API <--> DB_WRAPPER
+    DB <--> DB_WRAPPER
     DB <--> FILE_DB
     API --> UPLOAD
     UPLOAD --> FILE_DB
