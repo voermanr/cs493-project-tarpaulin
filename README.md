@@ -34,8 +34,74 @@ I suppose I should talk about the data architecture, but I don't think it's that
 # TODO
 - [x] add security fields to openapi
 - [x] merge
-- [ ] remember I have a todo list here
+- [x] remember I have a todo list here
 - [ ] Cover these routes in tests:
-  - [ ] `GET /users` &rarr; `200`
-  - [ ] `GET /users/{id}` &rarr; `200`
-  - [ ] `GET /users/login` &rarr; `200`
+  - User routes
+    - `/users`
+      - [x] `POST /users` &rarr; `201`
+      - [x] `POST /users` &rarr; `400`
+      - [x] `POST /users` &rarr; `403`
+    - `/users/login`
+      - [x] `POST /users/login` &rarr; `200`
+      - [x] `POST /users/login` &rarr; `400`
+      - [x] `POST /users/login` &rarr; `401`
+    - `/users/{id}`
+      - [ ] `GET /users/{id}` &rarr; `200`
+      - [ ] `GET /users/{id}` &rarr; `403`
+      - [ ] `GET /users/{id}` &rarr; `404`
+  - Courses Routes
+    - `/courses`
+      - [ ] `GET /courses` &rarr; `200`
+      - [ ] `GET /courses&page=2` &rarr; `200`
+      - [ ] `POST /courses` &rarr; `201`
+      - [ ] `POST /courses` &rarr; `400`
+      - [ ] `POST /courses` &rarr; `403`
+    - `/courses/{id}`
+      - [ ] `POST /courses/{id}` &rarr; `200`
+      - [ ] `POST /courses/{id}` &rarr; `404`
+      - [ ] `PATCH /courses/{id}` &rarr; `200`
+      - [ ] `PATCH /courses/{id}` &rarr; `400`
+      - [ ] `PATCH /courses/{id}` &rarr; `403`
+      - [ ] `PATCH /courses/{id}` &rarr; `404`
+      - [ ] `DELETE /courses/{id}` &rarr; `204`
+      - [ ] `DELETE /courses/{id}` &rarr; `403`
+      - [ ] `DELETE /courses/{id}` &rarr; `404`
+    - `/courses/{id}/students`
+      - [ ] `GET /courses/{id}/students` &rarr; `200`
+      - [ ] `GET /courses/{id}/students` &rarr; `403`
+      - [ ] `GET /courses/{id}/students` &rarr; `404`
+      - [ ] `POST /courses/{id}/students` &rarr; `200`
+      - [ ] `POST /courses/{id}/students` &rarr; `400`
+      - [ ] `POST /courses/{id}/students` &rarr; `403`
+      - [ ] `POST /courses/{id}/students` &rarr; `404`
+    - `/courses/{id}/roster`
+      - [ ] `GET /courses/{id}/roster` &rarr; `200`
+      - [ ] `GET /courses/{id}/roster` &rarr; `403`
+      - [ ] `GET /courses/{id}/roster` &rarr; `404`
+    - `/courses/{id}/assignments`
+      - [ ] `GET /courses/{id}/assignments` &rarr; `200`
+      - [ ] `GET /courses/{id}/assignments` &rarr; `404`
+  - Assignments Routes
+    - `/assignments`
+      - [ ] `POST /assignments` &rarr; `201`
+      - [ ] `POST /assignments` &rarr; `400`
+      - [ ] `POST /assignments` &rarr; `403`
+    - `/assignments/{id}`
+      - [ ] `GET /assignments/{id}` &rarr; `200`
+      - [ ] `GET /assignments/{id}` &rarr; `404`
+      - [ ] `PATCH /assignments/{id}` &rarr; `200`
+      - [ ] `PATCH /assignments/{id}` &rarr; `400`
+      - [ ] `PATCH /assignments/{id}` &rarr; `403`
+      - [ ] `PATCH /assignments/{id}` &rarr; `404`
+      - [ ] `DELETE /assignments/{id}` &rarr; `204`
+      - [ ] `DELETE /assignments/{id}` &rarr; `403`
+      - [ ] `DELETE /assignments/{id}` &rarr; `404`
+    - `/assignments/{id}/submissions`
+      - [ ] `GET /assignments/{id}/submissions` &rarr; `200`
+      - [ ] `GET /assignments/{id}/submissions` &rarr; `403`
+      - [ ] `GET /assignments/{id}/submissions` &rarr; `404`
+      - [ ] `POST /assignments/{id}/submissions` &rarr; `201`
+      - [ ] `POST /assignments/{id}/submissions` &rarr; `400`
+      - [ ] `POST /assignments/{id}/submissions` &rarr; `403`
+      - [ ] `POST /assignments/{id}/submissions` &rarr; `404`
+- [ ] Reorganize Tests
