@@ -1,6 +1,6 @@
 const {hash} = require("bcrypt");
 const {isAuthenticated, generateAuthToken} = require("../lib/authenicator");
-const {isAdmin} = require("../lib/authorizer");
+const {isAdmin, isOwner} = require("../lib/authorizer");
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const router = require("express").Router();
@@ -31,9 +31,7 @@ router.post('/login', async (req, res, next) => {
                 email: email,
             })
 
-            if (!authenticationRequester) {
-                res.status(401).json({error: 'Invalid username or password. Authorities have been notified.'});
-            } else {
+            if (authenticationRequester) {
                 const authenticatedUser = await bcrypt.compare(password, authenticationRequester.passwordHash);
 
                 if (authenticatedUser) {
@@ -41,8 +39,11 @@ router.post('/login', async (req, res, next) => {
                     res.status(200).json({
                         token: token
                     })
+                    return
                 }
             }
+
+            res.status(401).json({error: 'Invalid username or password. Authorities have been notified.'})
         } catch (err) { next(err); }
     }
 })
@@ -70,5 +71,17 @@ router.post('/', isCreatingAdmin, async (req, res, next) => {
         res.status(400).json({
             error: err.message
         })
+    }
+})
+
+router.use(isAuthenticated, isOwner)
+
+router.get('/:id', async (req, res, next) => {
+    try {
+        const body = await User.findById(req.params.id);
+
+        res.status(200).json({body})
+    } catch (err) {
+        next(err);
     }
 })
