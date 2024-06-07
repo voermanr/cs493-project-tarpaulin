@@ -59,6 +59,7 @@ router.post('/', isCreatingAdmin, async (req, res, next) => {
             }
             const user = await new User(hashedReqBody);
             await user.save();
+
             res.status(201).json({
                 id: user._id,
             });
@@ -70,7 +71,7 @@ router.post('/', isCreatingAdmin, async (req, res, next) => {
     } catch (err) {
         res.status(400).json({
             error: err.message
-        })
+        });
     }
 })
 
@@ -78,9 +79,17 @@ router.use(isAuthenticated, isOwner)
 
 router.get('/:id', async (req, res, next) => {
     try {
-        const body = await User.findById(req.params.id);
-
-        res.status(200).json({body})
+        let body = await User.findById(req.params.id);
+        body = body.toJSON();
+        if (body.role === 'student') {
+            delete body.coursesTeaching
+        } else if (body.role === 'instructor') {
+            delete body.coursesEnrolled
+        } else {
+            delete body.coursesTeaching
+            delete body.coursesEnrolled
+        }
+        res.status(200).json(body)
     } catch (err) {
         next(err);
     }

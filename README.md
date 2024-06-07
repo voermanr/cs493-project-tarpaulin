@@ -32,19 +32,19 @@ I suppose I should talk about the data architecture, but I don't think it's that
 ---
 
 # TODO
-- [x] add security fields to openapi
-- [x] merge
-- [x] remember I have a todo list here
+- [x] ~~add security fields to openapi~~
+- [x] ~~merge~~
+- [x] ~~remember I have a todo list here~~
 - [ ] Cover these routes in tests:
   - User routes
     - `/users`
-      - [x] `POST /users` &rarr; `201`
-      - [x] `POST /users` &rarr; `400`
-      - [x] `POST /users` &rarr; `403`
+      - [x] ~~`POST /users` &rarr; `201`~~
+      - [x] ~~`POST /users` &rarr; `400`~~
+      - [x] ~~`POST /users` &rarr; `403`~~
     - `/users/login`
-      - [x] `POST /users/login` &rarr; `200`
-      - [x] `POST /users/login` &rarr; `400`
-      - [x] `POST /users/login` &rarr; `401`
+      - [x] ~~`POST /users/login` &rarr; `200`~~
+      - [x] ~~`POST /users/login` &rarr; `400`~~
+      - [x] ~~`POST /users/login` &rarr; `401`~~
     - `/users/{id}`
       - [ ] `GET /users/{id}` &rarr; `200`
       - [ ] `GET /users/{id}` &rarr; `403`
@@ -53,9 +53,9 @@ I suppose I should talk about the data architecture, but I don't think it's that
     - `/courses`
       - [ ] `GET /courses` &rarr; `200`
       - [ ] `GET /courses&page=2` &rarr; `200`
-      - [ ] `POST /courses` &rarr; `201`
-      - [ ] `POST /courses` &rarr; `400`
-      - [ ] `POST /courses` &rarr; `403`
+      - [x] ~~`POST /courses` &rarr; `201`~~
+      - [x] ~~`POST /courses` &rarr; `400`~~
+      - [x] ~~`POST /courses` &rarr; `403`~~
     - `/courses/{id}`
       - [ ] `POST /courses/{id}` &rarr; `200`
       - [ ] `POST /courses/{id}` &rarr; `404`
