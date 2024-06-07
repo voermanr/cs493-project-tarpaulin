@@ -1,23 +1,24 @@
 ```mermaid
-graph LR
+graph TD
     CLIENT[Clients]
     subgraph docker compose
-        subgraph express
-            API[Tarpaulin API Server]
-            subgraph middleware
-                subgraph security middleware
-                    IP_LIMIT[Redis IP Rate limiting]
-                    AUTH[JWT Authentication]
-                end
-                UPLOAD[Multer File Upload]
-                DB_WRAPPER[mongoose]
-            end
-        end 
+        ROSTER[Deffered Roster Generation]
         subgraph database
             DB[MongoDB]
             FILE_DB[GridFS]
         end
-        ROSTER[Deffered Roster Generation]
+        subgraph express
+            subgraph middleware
+                DB_WRAPPER[mongoose]
+                UPLOAD[Multer File Upload]
+                subgraph security middleware
+                    IP_LIMIT[Redis IP Rate limiting]
+                    AUTH[JWT Authentication]
+                end
+            end
+
+            API[Tarpaulin API Server]
+        end
     end
 
     
