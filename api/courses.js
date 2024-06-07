@@ -5,6 +5,19 @@ const Course = require("../models/course");
 
 exports.router = router;
 
+router.get('/', async (req, res, next) => {
+    try {
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const skip = (page - 1) * limit;
+
+        const courses = await Course.find({}).skip(skip).limit(limit).lean()
+        res.status(200).json(courses)
+    } catch (err) {
+        next(err);
+    }
+})
+
 router.use(isAuthenticated);
 
 router.use(isAdmin);
@@ -23,3 +36,4 @@ router.post('/', async (req, res, next) => {
         });
     }
 })
+

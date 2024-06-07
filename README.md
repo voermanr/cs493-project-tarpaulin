@@ -37,28 +37,26 @@ I suppose I should talk about the data architecture, but I don't think it's that
 - [x] ~~remember I have a todo list here~~
 - [ ] Cover these routes in tests:
   - User routes
-    - `/users`
+    - ~~`/users`~~
       - [x] ~~`POST /users` &rarr; `201`~~
       - [x] ~~`POST /users` &rarr; `400`~~
       - [x] ~~`POST /users` &rarr; `403`~~
-    - `/users/login`
+    - ~~`/users/login`~~
       - [x] ~~`POST /users/login` &rarr; `200`~~
       - [x] ~~`POST /users/login` &rarr; `400`~~
       - [x] ~~`POST /users/login` &rarr; `401`~~
     - `/users/{id}`
-      - [ ] `GET /users/{id}` &rarr; `200`
-      - [ ] `GET /users/{id}` &rarr; `403`
-      - [ ] `GET /users/{id}` &rarr; `404`
+      - [x] ~~`GET /users/{id}` &rarr; `200`~~
+      - [x] ~~`GET /users/{id}` &rarr; `403`~~
+      - [x] ~~`GET /users/{id}` &rarr; `404`~~
   - Courses Routes
-    - `/courses`
-      - [ ] `GET /courses` &rarr; `200`
-      - [ ] `GET /courses&page=2` &rarr; `200`
+    - ~~`/courses`~~
+      - [x] ~~`GET /courses` &rarr; `200`~~
+      - [x] ~~`GET /courses&page=2` &rarr; `200`~~
       - [x] ~~`POST /courses` &rarr; `201`~~
       - [x] ~~`POST /courses` &rarr; `400`~~
       - [x] ~~`POST /courses` &rarr; `403`~~
     - `/courses/{id}`
-      - [ ] `POST /courses/{id}` &rarr; `200`
-      - [ ] `POST /courses/{id}` &rarr; `404`
       - [ ] `PATCH /courses/{id}` &rarr; `200`
       - [ ] `PATCH /courses/{id}` &rarr; `400`
       - [ ] `PATCH /courses/{id}` &rarr; `403`
