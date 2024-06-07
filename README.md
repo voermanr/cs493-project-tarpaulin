@@ -57,6 +57,8 @@ I suppose I should talk about the data architecture, but I don't think it's that
       - [x] ~~`POST /courses` &rarr; `400`~~
       - [x] ~~`POST /courses` &rarr; `403`~~
     - `/courses/{id}`
+      - [x] ~~`GET /courses/{id}` &rarr; `200`~~
+      - [x] ~~`GET /courses/{id}` &rarr; `404`~~
       - [ ] `PATCH /courses/{id}` &rarr; `200`
       - [ ] `PATCH /courses/{id}` &rarr; `400`
       - [ ] `PATCH /courses/{id}` &rarr; `403`

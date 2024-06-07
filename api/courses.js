@@ -18,6 +18,19 @@ router.get('/', async (req, res, next) => {
     }
 })
 
+router.get('/:id', async (req, res, next) => {
+    try {
+        const course = await Course.findOne(
+            { _id: req.params.id },
+            '-studentIds -assignmentIds',
+        );
+        res.status(200).json(course);
+    } catch (err) {
+        res.status(404).json(
+            { error: err.message}
+        )}
+})
+
 router.use(isAuthenticated);
 
 router.use(isAdmin);
