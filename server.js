@@ -26,14 +26,14 @@ startYourEngines().then(() =>
 app.use('/', api);
 
 app.use('*', (req, res) => {
-    res.status(404).json({
+    return res.status(404).json({
         error: req.originalUrl + " not found. Move along, citizen."
     });
 });
 
 app.use('*', (err, req, res) => {
     console.error("\t>> Error:", err)
-    res.status(500).json({
+    return res.status(500).json({
         error: "Server error. Try that again and see what happens."
     });
 });

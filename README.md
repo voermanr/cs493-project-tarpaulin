@@ -32,50 +32,20 @@ I suppose I should talk about the data architecture, but I don't think it's that
 ---
 
 # TODO
-- [x] ~~add security fields to openapi~~
-- [x] ~~merge~~
-- [x] ~~remember I have a todo list here~~
 - [ ] Cover these routes in tests:
-  - User routes
-    - ~~`/users`~~
-      - [x] ~~`POST /users` &rarr; `201`~~
-      - [x] ~~`POST /users` &rarr; `400`~~
-      - [x] ~~`POST /users` &rarr; `403`~~
-    - ~~`/users/login`~~
-      - [x] ~~`POST /users/login` &rarr; `200`~~
-      - [x] ~~`POST /users/login` &rarr; `400`~~
-      - [x] ~~`POST /users/login` &rarr; `401`~~
-    - `/users/{id}`
-      - [x] ~~`GET /users/{id}` &rarr; `200`~~
-      - [x] ~~`GET /users/{id}` &rarr; `403`~~
-      - [x] ~~`GET /users/{id}` &rarr; `404`~~
   - Courses Routes
-    - ~~`/courses`~~
-      - [x] ~~`GET /courses` &rarr; `200`~~
-      - [x] ~~`GET /courses&page=2` &rarr; `200`~~
-      - [x] ~~`POST /courses` &rarr; `201`~~
-      - [x] ~~`POST /courses` &rarr; `400`~~
-      - [x] ~~`POST /courses` &rarr; `403`~~
     - `/courses/{id}`
-      - [x] ~~`GET /courses/{id}` &rarr; `200`~~
-      - [x] ~~`GET /courses/{id}` &rarr; `404`~~
-      - [x] ~~`PATCH /courses/{id}` &rarr; `200`~~
       - [ ] `PATCH /courses/{id}` &rarr; `400`
-      - [x] ~~`PATCH /courses/{id}` &rarr; `403`~~
-      - [x] ~~`PATCH /courses/{id}` &rarr; `404`~~
-      - [x] ~~`DELETE /courses/{id}` &rarr; `204`~~
-      - [x] ~~`DELETE /courses/{id}` &rarr; `403`~~
-      - [x] ~~`DELETE /courses/{id}` &rarr; `404`~~
     - `/courses/{id}/students`
-      - [ ] `GET /courses/{id}/students` &rarr; `200`
+      - [x] ~~`GET /courses/{id}/students` &rarr; `200`~~
       - [ ] `GET /courses/{id}/students` &rarr; `403`
       - [ ] `GET /courses/{id}/students` &rarr; `404`
-      - [ ] `POST /courses/{id}/students` &rarr; `200`
-      - [ ] `POST /courses/{id}/students` &rarr; `400`
-      - [ ] `POST /courses/{id}/students` &rarr; `403`
-      - [ ] `POST /courses/{id}/students` &rarr; `404`
+      - [x] ~~`POST /courses/{id}/students` &rarr; `200`~~
+      - [x] ~~`POST /courses/{id}/students` &rarr; `400`~~
+      - [x] ~~`POST /courses/{id}/students` &rarr; `403`~~
+      - [x] ~~`POST /courses/{id}/students` &rarr; `404`~~
     - `/courses/{id}/roster`
-      - [ ] `GET /courses/{id}/roster` &rarr; `200`
+      - [x] ~~`GET /courses/{id}/roster` &rarr; `200`~~
       - [ ] `GET /courses/{id}/roster` &rarr; `403`
       - [ ] `GET /courses/{id}/roster` &rarr; `404`
     - `/courses/{id}/assignments`
@@ -83,11 +53,11 @@ I suppose I should talk about the data architecture, but I don't think it's that
       - [ ] `GET /courses/{id}/assignments` &rarr; `404`
   - Assignments Routes
     - `/assignments`
-      - [ ] `POST /assignments` &rarr; `201`
-      - [ ] `POST /assignments` &rarr; `400`
+      - [x] ~~`POST /assignments` &rarr; `201`~~
+      - [x] ~~`POST /assignments` &rarr; `400`~~
       - [ ] `POST /assignments` &rarr; `403`
     - `/assignments/{id}`
-      - [ ] `GET /assignments/{id}` &rarr; `200`
+      - [x] ~~`GET /assignments/{id}` &rarr; `200`~~
       - [ ] `GET /assignments/{id}` &rarr; `404`
       - [ ] `PATCH /assignments/{id}` &rarr; `200`
       - [ ] `PATCH /assignments/{id}` &rarr; `400`
