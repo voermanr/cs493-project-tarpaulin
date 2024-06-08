@@ -59,13 +59,13 @@ I suppose I should talk about the data architecture, but I don't think it's that
     - `/courses/{id}`
       - [x] ~~`GET /courses/{id}` &rarr; `200`~~
       - [x] ~~`GET /courses/{id}` &rarr; `404`~~
-      - [ ] `PATCH /courses/{id}` &rarr; `200`
+      - [x] ~~`PATCH /courses/{id}` &rarr; `200`~~
       - [ ] `PATCH /courses/{id}` &rarr; `400`
-      - [ ] `PATCH /courses/{id}` &rarr; `403`
-      - [ ] `PATCH /courses/{id}` &rarr; `404`
-      - [ ] `DELETE /courses/{id}` &rarr; `204`
-      - [ ] `DELETE /courses/{id}` &rarr; `403`
-      - [ ] `DELETE /courses/{id}` &rarr; `404`
+      - [x] ~~`PATCH /courses/{id}` &rarr; `403`~~
+      - [x] ~~`PATCH /courses/{id}` &rarr; `404`~~
+      - [x] ~~`DELETE /courses/{id}` &rarr; `204`~~
+      - [x] ~~`DELETE /courses/{id}` &rarr; `403`~~
+      - [x] ~~`DELETE /courses/{id}` &rarr; `404`~~
     - `/courses/{id}/students`
       - [ ] `GET /courses/{id}/students` &rarr; `200`
       - [ ] `GET /courses/{id}/students` &rarr; `403`
