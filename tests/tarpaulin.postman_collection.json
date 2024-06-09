@@ -635,102 +635,6 @@
 							"response": []
 						},
 						{
-							"name": "Create a new course Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{adminAuthToken}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"subject\": \"CS\",\n    \"number\": \"493\",\n    \"title\": \"Cloud Application Development\",\n    \"term\": \"sp22\",\n    \"instructorId\": \"{{instructorId}}\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/courses",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"courses"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create a new course Copy 2",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{adminAuthToken}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"subject\": \"CS\",\n    \"number\": \"493\",\n    \"title\": \"Cloud Application Development\",\n    \"term\": \"sp22\",\n    \"instructorId\": \"{{instructorId}}\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/courses",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"courses"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Create a new course Copy 3",
 							"event": [
 								{
@@ -1463,6 +1367,57 @@
 					"response": []
 				},
 				{
+					"name": "Patch an assignments points",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{instructorAuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"points\": 69\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/assignments/{{assignmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"assignments",
+								"{{assignmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "get an assignment",
 					"event": [
 						{
@@ -1492,6 +1447,42 @@
 							"path": [
 								"assignments",
 								"{{assignmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a courses assignments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/courses/{{courseId}}/assignments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses",
+								"{{courseId}}",
+								"assignments"
 							]
 						}
 					},

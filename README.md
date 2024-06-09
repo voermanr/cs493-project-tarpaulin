@@ -35,7 +35,7 @@ I suppose I should talk about the data architecture, but I don't think it's that
 - [ ] Cover these routes in tests:
   - Courses Routes
     - `/courses/{id}`
-      - [ ] `PATCH /courses/{id}` &rarr; `400`
+      - [x] ~~`PATCH /courses/{id}` &rarr; `400`~~
     - `/courses/{id}/students`
       - [x] ~~`GET /courses/{id}/students` &rarr; `200`~~
       - [ ] `GET /courses/{id}/students` &rarr; `403`
@@ -49,7 +49,7 @@ I suppose I should talk about the data architecture, but I don't think it's that
       - [ ] `GET /courses/{id}/roster` &rarr; `403`
       - [ ] `GET /courses/{id}/roster` &rarr; `404`
     - `/courses/{id}/assignments`
-      - [ ] `GET /courses/{id}/assignments` &rarr; `200`
+      - [x] ~~`GET /courses/{id}/assignments` &rarr; `200`~~
       - [ ] `GET /courses/{id}/assignments` &rarr; `404`
   - Assignments Routes
     - `/assignments`

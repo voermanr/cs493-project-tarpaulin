@@ -42,6 +42,24 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
+router.get('/:id/assignments', async (req, res, next) => {
+        try {
+            const assignments = await Course.findById(
+                req.params.id,
+                '-_id assignmentIds',
+            ).populate('assignmentIds', 'title points due')
+
+            if (!assignments) {
+                return res.status(404).json({ error: 'No course with this id'});
+            } else {
+                return res.status(200).json(assignments);
+            }
+
+        } catch(err) {
+            next(err);
+        }
+})
+
 router.use(isAuthenticated)
 
 router.post('/', isAdmin, async (req, res, next) => {

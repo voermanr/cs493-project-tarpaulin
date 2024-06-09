@@ -89,7 +89,7 @@ router.get('/:id', async (req, res, next) => {
             delete body.coursesTeaching
             delete body.coursesEnrolled
         }
-        res.status(200).json(body)
+        return res.status(200).json(body)
     } catch (err) {
         next(err);
     }
