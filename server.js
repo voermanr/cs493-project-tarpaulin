@@ -3,8 +3,6 @@ const morgan = require('morgan');
 const initDB = require('./config/initDB');
 
 const api = require('./api')
-const {connectDB} = require("./lib/mongoConnection");
-const mongoose = require("mongoose");
 
 const app = express();
 

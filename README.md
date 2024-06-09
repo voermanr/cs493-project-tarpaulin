@@ -34,38 +34,26 @@ I suppose I should talk about the data architecture, but I don't think it's that
 # TODO
 - [ ] Cover these routes in tests:
   - Courses Routes
-    - `/courses/{id}`
-      - [x] ~~`PATCH /courses/{id}` &rarr; `400`~~
     - `/courses/{id}/students`
-      - [x] ~~`GET /courses/{id}/students` &rarr; `200`~~
       - [ ] `GET /courses/{id}/students` &rarr; `403`
       - [ ] `GET /courses/{id}/students` &rarr; `404`
-      - [x] ~~`POST /courses/{id}/students` &rarr; `200`~~
-      - [x] ~~`POST /courses/{id}/students` &rarr; `400`~~
-      - [x] ~~`POST /courses/{id}/students` &rarr; `403`~~
-      - [x] ~~`POST /courses/{id}/students` &rarr; `404`~~
     - `/courses/{id}/roster`
-      - [x] ~~`GET /courses/{id}/roster` &rarr; `200`~~
       - [ ] `GET /courses/{id}/roster` &rarr; `403`
       - [ ] `GET /courses/{id}/roster` &rarr; `404`
     - `/courses/{id}/assignments`
-      - [x] ~~`GET /courses/{id}/assignments` &rarr; `200`~~
       - [ ] `GET /courses/{id}/assignments` &rarr; `404`
   - Assignments Routes
     - `/assignments`
-      - [x] ~~`POST /assignments` &rarr; `201`~~
-      - [x] ~~`POST /assignments` &rarr; `400`~~
       - [ ] `POST /assignments` &rarr; `403`
     - `/assignments/{id}`
-      - [x] ~~`GET /assignments/{id}` &rarr; `200`~~
       - [ ] `GET /assignments/{id}` &rarr; `404`
-      - [ ] `PATCH /assignments/{id}` &rarr; `200`
-      - [ ] `PATCH /assignments/{id}` &rarr; `400`
-      - [ ] `PATCH /assignments/{id}` &rarr; `403`
-      - [ ] `PATCH /assignments/{id}` &rarr; `404`
-      - [ ] `DELETE /assignments/{id}` &rarr; `204`
-      - [ ] `DELETE /assignments/{id}` &rarr; `403`
-      - [ ] `DELETE /assignments/{id}` &rarr; `404`
+      - [x] ~~`PATCH /assignments/{id}` &rarr; `200`~~
+      - [x] ~~`PATCH /assignments/{id}` &rarr; `400`~~
+      - [x] ~~`PATCH /assignments/{id}` &rarr; `403`~~
+      - [x] ~~`PATCH /assignments/{id}` &rarr; `404`~~
+      - [x] ~~`DELETE /assignments/{id}` &rarr; `204`~~
+      - [x] ~~`DELETE /assignments/{id}` &rarr; `403`~~
+      - [x] ~~`DELETE /assignments/{id}` &rarr; `404`~~
     - `/assignments/{id}/submissions`
       - [ ] `GET /assignments/{id}/submissions` &rarr; `200`
       - [ ] `GET /assignments/{id}/submissions` &rarr; `403`

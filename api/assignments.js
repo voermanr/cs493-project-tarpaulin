@@ -2,11 +2,11 @@ const {isOwner} = require("../lib/authorizer");
 const Assignment = require("../models/assignment");
 const {isAuthenticated} = require("../lib/authenicator");
 const Course = require("../models/course");
-const User = require("../models/user");
+const {isValidId, validateId} = require("../lib/validators");
 const router = require('express').Router();
 exports.router = router;
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', isValidId, async (req, res, next) => {
     try {
         const assignment = await Assignment.findById(req.params.id, '-submissionIds')
 
@@ -21,9 +21,7 @@ router.get('/:id', async (req, res, next) => {
 
 })
 
-router.use(isAuthenticated, isOwner);
-
-router.post('/', async (req, res, next) => {
+router.post('/', isAuthenticated, isOwner, async (req, res, next) => {
     try {
         const assignment = await new Assignment(req.body);
         await assignment.save();
@@ -42,7 +40,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.patch('/:id', async (req, res, next) => {
+router.patch('/:id', isValidId, isAuthenticated, isOwner, async (req, res, next) => {
     const id = req.params.id;
 
     const { submissionIds, ...updateData } = req.body;
@@ -55,14 +53,21 @@ router.patch('/:id', async (req, res, next) => {
 
     try {
         const assignment = await Assignment.findById(id)
+        if (!assignment) { res.status(404).json({error: "No assignment with this id"}); }
+
         const origCourseId = assignment.courseId
 
-        console.log("assignment:", assignment);
-        console.log("origCourseId:", origCourseId);
-        console.log("updateData:", updateData);
+        ///console.log("assignment:", assignment);
+        //console.log("origCourseId:", origCourseId);
+        //console.log("updateData:", updateData);
 
+        if (updateData.courseId) {
+            if (!validateId(updateData.courseId)) {
+                return res.status(404).json({error: "Course not found"});
+            }
+        }
         const updatedAssignment = await Assignment.findByIdAndUpdate(id, updateData);
-        console.log("updatedAssignment", updatedAssignment);
+        //console.log("updatedAssignment", updatedAssignment);
 
         if (!updatedAssignment) {
             return res.status(404).json({ error: 'Course not found' });
@@ -70,18 +75,39 @@ router.patch('/:id', async (req, res, next) => {
         const updatedCourseId = updatedAssignment.courseId;
 
         if (origCourseId !== updatedCourseId) {
-            await Course.findByIdAndUpdate(
+            const addedCourse = await Course.findByIdAndUpdate(
                 updatedCourseId,
                 { $addToSet: { assignmentIds: updatedAssignment._id} }
             );
-            await Course.findByIdAndUpdate(
+            if (!addedCourse) {
+                return res.status(404).json({ error: 'Course not found' });
+            }
+
+            const removedCourse = await Course.findByIdAndUpdate(
                 origCourseId,
                 { $pull: { assignmentIds: updatedAssignment._id } },
             );
+            if (!removedCourse) {
+                return res.status(404).json({ error: 'Course not found' });
+            }
         }
 
         return res.sendStatus(200);
     } catch (err) {
         next(err);
+    }
+})
+
+router.delete('/:id', isValidId, isAuthenticated, isOwner, async (req, res, next) => {
+    try {
+        const deletedAssignment = await Assignment.findByIdAndDelete(req.params.id)
+        if (!deletedAssignment) {
+            return res.status(404).json({
+                error: "Assignment not found",
+            })
+        }
+        return res.sendStatus(204);
+    } catch (error) {
+        next(error);
     }
 })
