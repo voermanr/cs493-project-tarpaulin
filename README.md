@@ -48,12 +48,9 @@ I suppose I should talk about the data architecture, but I don't think it's that
     - `/assignments/{id}`
       - [ ] `GET /assignments/{id}` &rarr; `404`
     - `/assignments/{id}/submissions`
-      - [x] ~~`GET /assignments/{id}/submissions` &rarr; `200`~~
       - [ ] `GET /assignments/{id}/submissions` &rarr; `403`
       - [ ] `GET /assignments/{id}/submissions` &rarr; `404`
-      - [x] ~~`POST /assignments/{id}/submissions` &rarr; `201`~~
-      - [x] ~~`POST /assignments/{id}/submissions` &rarr; `400`~~
       - [ ] `POST /assignments/{id}/submissions` &rarr; `403`
       - [ ] `POST /assignments/{id}/submissions` &rarr; `404`
 - [ ] Reorganize Tests
-- [ ] Add rate limiting
+- [x] ~~Add rate limiting~~
