@@ -6,6 +6,7 @@ services:
 
     depends_on:
       - mongo
+      - redis
 
     environment:
       - API_PORT=${API_PORT}
