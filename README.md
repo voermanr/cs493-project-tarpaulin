@@ -31,7 +31,12 @@ I suppose I should talk about the data architecture, but I don't think it's that
 
 ---
 
+# Supporting Resources
 [Link to Loom video walkthrough](https://www.loom.com/share/eae7bdb701864d2f87904472c8cfa08a)
+
+[Link to Team Reflection document](https://docs.google.com/document/d/1Zgdzzs5JfxmCbigwii3M4rHpUyV_eyfxVshuiXVBL10/edit?usp=sharing)
+
+---
 
 # TODO
 - [ ] Cover these routes in tests:
