@@ -2822,12 +2822,12 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{instructorAuthToken}}",
+									"value": "{{studentAuthToken}}",
 									"type": "string"
 								}
 							]
 						},
-						"method": "DELETE",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",

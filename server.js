@@ -3,12 +3,14 @@ const morgan = require('morgan');
 const initDB = require('./config/initDB');
 
 const api = require('./api')
+const rateLimiter = require("./lib/ratelimiter");
 
 const app = express();
 
 const port = process.env.API_PORT;
 
 app.use(morgan('dev'));
+app.use(rateLimiter);
 app.use(express.json());
 app.use(express.static('public'));
 
