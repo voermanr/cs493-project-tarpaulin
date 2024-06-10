@@ -31,6 +31,8 @@ I suppose I should talk about the data architecture, but I don't think it's that
 
 ---
 
+[Link to Loom video walkthrough](https://www.loom.com/share/481a2223bbe149eea440b9274a35adc2)
+
 # TODO
 - [ ] Cover these routes in tests:
   - Courses Routes
