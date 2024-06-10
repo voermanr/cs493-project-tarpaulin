@@ -23,7 +23,6 @@ router.get('/:id', isValidId, async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-
 })
 
 router.post('/', isAuthenticated, isOwner, async (req, res) => {
