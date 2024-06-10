@@ -47,19 +47,13 @@ I suppose I should talk about the data architecture, but I don't think it's that
       - [ ] `POST /assignments` &rarr; `403`
     - `/assignments/{id}`
       - [ ] `GET /assignments/{id}` &rarr; `404`
-      - [x] ~~`PATCH /assignments/{id}` &rarr; `200`~~
-      - [x] ~~`PATCH /assignments/{id}` &rarr; `400`~~
-      - [x] ~~`PATCH /assignments/{id}` &rarr; `403`~~
-      - [x] ~~`PATCH /assignments/{id}` &rarr; `404`~~
-      - [x] ~~`DELETE /assignments/{id}` &rarr; `204`~~
-      - [x] ~~`DELETE /assignments/{id}` &rarr; `403`~~
-      - [x] ~~`DELETE /assignments/{id}` &rarr; `404`~~
     - `/assignments/{id}/submissions`
-      - [ ] `GET /assignments/{id}/submissions` &rarr; `200`
+      - [x] ~~`GET /assignments/{id}/submissions` &rarr; `200`~~
       - [ ] `GET /assignments/{id}/submissions` &rarr; `403`
       - [ ] `GET /assignments/{id}/submissions` &rarr; `404`
-      - [ ] `POST /assignments/{id}/submissions` &rarr; `201`
-      - [ ] `POST /assignments/{id}/submissions` &rarr; `400`
+      - [x] ~~`POST /assignments/{id}/submissions` &rarr; `201`~~
+      - [x] ~~`POST /assignments/{id}/submissions` &rarr; `400`~~
       - [ ] `POST /assignments/{id}/submissions` &rarr; `403`
       - [ ] `POST /assignments/{id}/submissions` &rarr; `404`
 - [ ] Reorganize Tests
+- [ ] Add rate limiting
